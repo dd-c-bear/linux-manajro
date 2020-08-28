@@ -1,4 +1,7 @@
-first_name = 'ryan'
-last_name = 'lulu'
-dd = f'Hello, {first_name} {last_name}'
-print(dd)
+a = input('your name :')
+if a in('dd','bb'):
+    print('hello')
+elif a == 'pp':
+    print('olleh')
+else:
+    print('bibi')
