@@ -1,7 +1,17 @@
-a = input('your name :')
-if a in('dd','bb'):
-    print('hello')
-elif a == 'pp':
-    print('olleh')
-else:
-    print('bibi')
+import math
+
+a=int(input('a number'))
+b=int(input('b number'))
+
+c=int(input('c number'))
+
+def quadratic(a, b, c):
+    d=(b**-4*a*c)
+    g=math.sqrt(d)
+    if a !=0 and d>=0:
+        md = (-b+g)/2*a
+        mb=(-b-g)/2*a
+    else:
+        print('errors')
+    return md,mb
+print(quadratic(a,b,c))
