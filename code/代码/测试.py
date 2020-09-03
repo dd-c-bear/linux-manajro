@@ -13,5 +13,5 @@ def quadratic(a, b, c):
         mb=(-b-g)/2*a
     else:
         print('errors')
-    return md,mb
+    return('%.2f,%.2f'%(md,mb))
 print(quadratic(a,b,c))
