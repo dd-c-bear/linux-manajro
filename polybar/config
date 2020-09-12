@@ -62,7 +62,6 @@ modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
-
 ;wm-restack = bspwm
 ;wm-restack = i3
 
@@ -403,5 +402,6 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
 
 ; vim:ft=dosini

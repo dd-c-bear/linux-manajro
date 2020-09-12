@@ -1,5 +1,4 @@
 import math
-
 a=int(input('a number'))
 b=int(input('b number'))
 
@@ -14,4 +13,4 @@ def quadratic(a, b, c):
     else:
         print('errors')
     return('%.2f,%.2f'%(md,mb))
-print(quadratic(a,b,c))
+print(quadratic)
