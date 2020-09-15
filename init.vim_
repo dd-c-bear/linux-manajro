@@ -45,6 +45,7 @@ function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
 call plug#begin('~/.vim/plugged')
+  Plug 'tmhedberg/SimpylFold'
   Plug 'vim-airline/vim-airline'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'kien/rainbow_parentheses.vim'
@@ -53,18 +54,27 @@ call plug#begin('~/.vim/plugged')
   Plug 'iamcco/markdown-preview.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'vim-airline/vim-airline-themes'
+  Plug 'Yggdroot/indentLine'
+  Plug 'tpope/vim-surround'
+  Plug 'dhruvasagar/vim-table-mode'
+  Plug 'preservim/nerdcommenter'
   Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 
 
 "for plug
+let g:indent_guides_guide_size  =1 
+let g:indent_guides_start_level =2 
+
 colorscheme gruvbox
 set background=dark 
+
 let NERDTreeWinSize=25
 " 绑定F2到NERDTreeToggle
 map <F2> :NERDTreeToggle<CR>
-let g:airline_theme='violet'
+
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 1
 " 使用powerline打过补丁的字体
 let g:airline_powerline_fonts=1
@@ -73,6 +83,7 @@ if !exists('g:airline_symbols')
 endif
 " 关闭空白符检测
 let g:airline#extensions#whitespace#enabled=0
+
 let g:rbpt_colorpairs = [
                         \ ['brown',       'RoyalBlue3'],
                         \ ['Darkblue',    'SeaGreen3'],
@@ -187,4 +198,32 @@ let g:mkdp_path_to_chrome = "/bin/chromium"
     " 设置为 1, 在使用的网络中的其他计算机也能访问预览页面
     " 默认只监听本地（127.0.0.1），其他计算机不能访问
 
-    
+   autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+   autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
+   autocmd Filetype markdown inoremap ,s **** <++><Esc>F*hi
+   autocmd Filetype markdown inoremap ,h ~~~~ <++><Esc>F~hi
+   autocmd Filetype markdown inoremap ,e ** <++><Esc>F*i
+   autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
+   autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+   autocmd Filetype markdown inoremap ,h ====<Space><++><Esc>F=hi
+   autocmd Filetype markdown inoremap ,p ![](<++>) <++><Esc>F[a
+   autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
+   autocmd Filetype markdown inoremap ,1 #<Space><Enter><++><Esc>kA
+   autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
+   autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
+   autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
+   autocmd Filetype markdown inoremap ,l --------<Enter>
+
+function! s:isAtStartOfLine(mapping)
+  let text_before_cursor = getline('.')[0 : col('.')-1]
+  let mapping_pattern = '\V' . escape(a:mapping, '\')
+  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
