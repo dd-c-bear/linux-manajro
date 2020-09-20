@@ -1,4 +1,4 @@
-![](picture) 
+![file:/c/desktop/DSCF6100](picture) 
 ### Ryan,15
 --------
 ### Dongzhimen High School
