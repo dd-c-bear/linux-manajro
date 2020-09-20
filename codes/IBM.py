@@ -14,4 +14,3 @@ elif 28<bmi<=32:
 else:
     print('你可能是头?')
 print('谢谢使用')
-
