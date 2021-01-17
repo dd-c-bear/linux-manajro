@@ -15,3 +15,5 @@ else:
     r=(s1-s2)/s1*100
     print('%s,你退步了%.1f%%'%(name,r))
 print('总结完毕！')
+
+
