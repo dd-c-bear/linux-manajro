@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/dd/Github/code/代码'
+let g:netrw_dirhist_6='/home/dd/Github/code'
+let g:netrw_dirhist_5='/home/dd/Github'
+let g:netrw_dirhist_4='/home/dd/Github/code/笔记'
+let g:netrw_dirhist_3='/home/dd/Github/code'
+let g:netrw_dirhist_2='/home/dd/Github'
+let g:netrw_dirhist_1='/home/dd/.config/nvim'
