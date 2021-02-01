@@ -13,4 +13,10 @@ def quadratic(a, b, c):
     else:
         print('errors')
     return('%.2f,%.2f'%(md,mb))
-print(quadratic)
+print('hello')
+x = input('a number')
+x = int(x)
+if x == 2 :
+    print('yes')
+else :
+    print('no')
